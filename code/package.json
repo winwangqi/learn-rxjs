@@ -1,0 +1,29 @@
+{
+  "name": "learn-rxjs",
+  "version": "1.0.0",
+  "description": "learn rxjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winwangqi/learn-rxjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/winwangqi/learn-rxjs/issues"
+  },
+  "homepage": "https://github.com/winwangqi/learn-rxjs#readme",
+  "devDependencies": {
+    "less": "^3.8.1",
+    "parcel-bundler": "^1.10.3",
+    "typescript": "^3.1.3"
+  },
+  "dependencies": {
+    "rxjs": "^6.3.3"
+  }
+}
