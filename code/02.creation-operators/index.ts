@@ -58,8 +58,8 @@ import { ajax } from 'rxjs/ajax'
 // const o4$ = generate(
 //   0,
 //   v => v < 10,
-//   v => v + 1,
-//   v => v
+//   v => v + 2,
+//   v => v * 2
 // )
 // o4$.subscribe(
 //   console.log,
