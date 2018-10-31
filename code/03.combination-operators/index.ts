@@ -3,6 +3,8 @@ import {
   of,
   interval,
   timer,
+  fromEvent,
+  forkJoin,
 } from 'rxjs'
 import {
   concat,
@@ -10,6 +12,10 @@ import {
   merge,
   zip,
   combineLatest,
+  withLatestFrom,
+  race,
+  startWith,
+  take,
 } from 'rxjs/operators'
 
 const observer = {
@@ -50,13 +56,43 @@ const observer = {
 
 // combineLast
 // 所有完结才完结
-const o1$ = timer(500, 1000)
-const o2$ = timer(1000, 1000)
-const o3$ = o1$.pipe(combineLatest(o2$, (v1, v2) => {
-  return `${v1} x ${v2}`
+// const o1$ = timer(500, 1000)
+// const o2$ = timer(1000, 1000)
+// const o3$ = o1$.pipe(combineLatest(o2$, (v1, v2) => {
+//   return `${v1} x ${v2}`
 
-}))
+// }))
 // o3$.subscribe(observer)
 
 
-// 
+// withLatestFrom
+// const o1$ = timer(0, 2000).pipe(map(x => x * 100))
+// const o2$ = timer(500, 1000)
+// const o3$ = o1$.pipe(withLatestFrom(o2$, (a, b) => a + b))
+// o3$.subscribe(observer)
+
+// const event$ = fromEvent(document.body, 'click')
+// const x$ = event$.pipe(map(event => event.x))
+// const y$ = event$.pipe(map(event => event.y))
+// const result$ = x$.pipe(withLatestFrom(y$))
+// result$.subscribe(observer)
+
+
+// race
+// const o1$ = timer(0, 2000).pipe(map(x => x + 'a'))
+// const o2$ = timer(500, 1000).pipe(map(x => x + 'b'))
+// const o3$ = o1$.pipe(race(o2$))
+// o3$.subscribe(observer)
+
+
+// startWith
+// const o1$ = timer(0, 1000)
+// const o2$ = o1$.pipe(startWith('start', 'a', 'b', 'c'))
+// o2$.subscribe(observer)
+
+
+// forkJoin
+const o1$ = timer(0, 1000).pipe(map(x => x + 'a'), take(2))
+const o2$ = timer(500, 1000).pipe(map(x => x + 'b'), take(3))
+const o3$ = forkJoin(o1$, o2$)
+o3$.subscribe(observer)
