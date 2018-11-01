@@ -16,6 +16,12 @@ import {
   race,
   startWith,
   take,
+  concatAll,
+  mergeAll,
+  zipAll,
+  combineAll,
+  switchAll,
+  exhaust,
 } from 'rxjs/operators'
 
 const observer = {
@@ -92,7 +98,102 @@ const observer = {
 
 
 // forkJoin
-const o1$ = timer(0, 1000).pipe(map(x => x + 'a'), take(2))
-const o2$ = timer(500, 1000).pipe(map(x => x + 'b'), take(3))
-const o3$ = forkJoin(o1$, o2$)
-o3$.subscribe(observer)
+// const o1$ = timer(0, 1000).pipe(map(x => x + 'a'), take(2))
+// const o2$ = timer(500, 1000).pipe(map(x => x + 'b'), take(3))
+// const o3$ = forkJoin(o1$, o2$)
+// o3$.subscribe(observer)
+
+
+// concatAll
+// interval(1000)
+//   .pipe(
+//     take(2),
+//     map(x => 
+//       interval(1500)
+//         .pipe(
+//           map(y => `${x}:${y}`),
+//           take(3)
+//         )
+//     ),
+//     concatAll()
+//   )
+//   .subscribe(observer)
+
+
+// mergeAll
+// interval(1000)
+//   .pipe(
+//     take(2),
+//     map(x => 
+//       interval(1500)
+//         .pipe(
+//           map(y => `${x}:${y}`),
+//           take(3)
+//         )
+//     ),
+//     mergeAll()
+//   )
+//   .subscribe(observer)
+
+
+// zipAll
+// interval(1000)
+//   .pipe(
+//     take(2),
+//     map(x => 
+//       interval(1500)
+//         .pipe(
+//           map(y => `${x}:${y}`),
+//           take(3)
+//         )
+//     ),
+//     zipAll()
+//   )
+//   .subscribe(observer)
+
+// combineAll
+// interval(1000)
+//   .pipe(
+//     take(2),
+//     map(x => 
+//       interval(1500)
+//         .pipe(
+//           map(y => `${x}:${y}`),
+//           take(3)
+//         )
+//     ),
+//     combineAll()
+//   )
+//   .subscribe(observer)
+
+
+// switchAll
+// interval(1000)
+//   .pipe(
+//     take(2),
+//     map(x => 
+//       interval(1500)
+//         .pipe(
+//           map(y => `${x}:${y}`),
+//           take(3)
+//         )
+//     ),
+//     switchAll()
+//   )
+//   .subscribe(observer)
+
+  
+// exhaust
+// interval(1000)
+//   .pipe(
+//     take(2),
+//     map(x => 
+//       interval(1500)
+//         .pipe(
+//           map(y => `${x}:${y}`),
+//           take(3)
+//         )
+//     ),
+//     exhaust()
+//   )
+//   .subscribe(observer)
